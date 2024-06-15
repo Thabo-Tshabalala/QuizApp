@@ -35,7 +35,7 @@ class _QuizState extends State<Quiz> {
     if (selectedAnswer.length == springBootQuestions.length) {
       setState(() {
         activeScreen = 'results-screen';
-        selectedAnswer = [];
+        // selectedAnswer = [];
       });
     }
   }
@@ -50,7 +50,9 @@ class _QuizState extends State<Quiz> {
     }
 
     if (activeScreen == 'results-screen') {
-      screenWidget = const ResultsScreen();
+      screenWidget = ResultsScreen(
+        chooseAnswers: selectedAnswer,
+      );
     }
 
     return MaterialApp(

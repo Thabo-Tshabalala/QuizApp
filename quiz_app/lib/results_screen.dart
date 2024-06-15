@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/data/questions.dart';
+import 'package:quiz_app/questions_summary.dart';
 
 class ResultsScreen extends StatelessWidget {
-  const ResultsScreen({super.key});
+  const ResultsScreen({required this.chooseAnswers, super.key});
+
+  final List<String> chooseAnswers;
+
+  List<Map<String, Object>> getSummaryData() {
+    final List<Map<String, Object>> summary = [];
+    for (var i = 0; i < chooseAnswers.length; i++) {
+      //I need to finish my Logic
+      summary.add({
+        'question_index': i,
+        'question': springBootQuestions[i].text,
+        'correct_answer': springBootQuestions[i].answers[0],
+        'user_answer': chooseAnswers[i]
+      });
+    }
+    return summary;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -15,7 +34,7 @@ class ResultsScreen extends StatelessWidget {
                 const SizedBox(
                   height: 25,
                 ),
-                const Text('List of Answers and Questions'),
+                QuestionsSummary(getSummaryData()),
                 const SizedBox(
                   height: 25,
                 ),
