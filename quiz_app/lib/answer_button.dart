@@ -8,11 +8,14 @@ class AnswerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(139, 236, 236, 42)),
+      style: ElevatedButton.styleFrom(
+        padding:const  EdgeInsets.symmetric(vertical: 10,horizontal: 35),
+          backgroundColor: const Color.fromARGB(139, 236, 236, 42),
+          foregroundColor: Colors.white),
       onPressed: onTap,
       child: Text(
+        textAlign: TextAlign.center,
         answerText,
-        style: const TextStyle(color: Colors.white, fontSize: 14),
       ),
       // So in order to get the answers from the dummy model we must run a loop from that class.
     );
