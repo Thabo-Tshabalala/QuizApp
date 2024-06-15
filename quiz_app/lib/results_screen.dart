@@ -23,6 +23,11 @@ class ResultsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final summaryData = getSummaryData();
+    final numTotalQuestions = springBootQuestions.length;
+    final numCorrectAnswers = summaryData
+        .where((data) => data['user_answer'] == data['correct_answer'])
+        .length;
     return SizedBox(
         width: double.infinity,
         child: Container(
@@ -30,7 +35,8 @@ class ResultsScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Text('You answer X out of Y questions Correctly'),
+                Text(
+                    'You answer $numCorrectAnswers out of $numTotalQuestions questions Correctly'),
                 const SizedBox(
                   height: 25,
                 ),
