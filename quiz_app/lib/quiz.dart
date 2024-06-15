@@ -1,43 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:quiz_app/questions_screen.dart';
+import 'package:quiz_app/start_screen.dart';
 
-class Quiz extends StatelessWidget {
+class Quiz extends StatefulWidget {
   const Quiz({super.key});
+  @override
+  State<Quiz> createState() {
+    return _QuizState();
+  }
+}
+
+class _QuizState extends State<Quiz> {
+  // Widget? activeScreen;
+  var activeScreen = 'start-screen';
+
+  // @override
+  // void initState() {
+  //   activeScreen = StartScreen(switchScreen);
+  //   super.initState();
+  // }
+
+  void switchScreen() {
+    setState(() {
+      // activeScreen = const QuestionsScreen();
+      activeScreen = 'questions-screen';
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.deepOrange,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Image.asset(
-              "assets/images/quiz-logo.png",
-              width: 300,
-            ),
-            const SizedBox(
-              height: 50,
-            ),
-            const Text("Learn Flutter the fun way",
-                style: TextStyle(
-                    fontSize: 22,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w100)),
-            const SizedBox(
-              height: 20,
-            ),
-            OutlinedButton.icon(
-              onPressed: () {},
-              style: OutlinedButton.styleFrom(
-                foregroundColor: Colors.white,
-              ),
-              label: const Text(
-                'Start Quiz',
-                style: TextStyle(fontSize: 20),
-              ),
-              icon: const Icon(Icons.arrow_right_alt_outlined),
-            )
-          ],
+    Widget screenWidget = StartScreen(switchScreen);
+    if (activeScreen == 'questions-screen') {
+      screenWidget = const QuestionsScreen();
+    }
+
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+                colors: [Colors.orangeAccent, Colors.pinkAccent],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomLeft),
+          ),
+          child: screenWidget,
+          // child: activeScreen== 'start-screen'? StartScreen(switchScreen):const QuestionsScreen() ,
         ),
       ),
     );
