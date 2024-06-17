@@ -53,7 +53,10 @@ class ResultsScreen extends StatelessWidget {
                 TextButton.icon(
                     onPressed: onRestart,
                     icon: const Icon(Icons.refresh),
-                    label: const Text('Restart Quiz'))
+                    label: const Text(
+                      'Restart Quiz',
+                      style: TextStyle(color: Colors.white),
+                    ))
               ],
             )));
   }

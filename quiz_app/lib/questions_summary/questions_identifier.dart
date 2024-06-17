@@ -14,12 +14,12 @@ class QuestionsIdentifier extends StatelessWidget {
       height: 30,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-          color: isCorrectAnswer ? Colors.green : Colors.red,
+          color: isCorrectAnswer ? Colors.green : const Color.fromARGB(216, 244, 67, 54),
           borderRadius: BorderRadius.circular(100)),
       child: Text(
         questionNumber.toString(),
         style: const TextStyle(
-            fontWeight: FontWeight.bold, color: Colors.pinkAccent),
+            fontWeight: FontWeight.bold, color: Colors.white),
       ),
     );
   }
